@@ -40,7 +40,68 @@ class LoadFileTests < Minitest::Test
                 assert_raises(JSON::ParserError) {SalesReport.load_json(file.path)}
             end
     end
+end
 
+class BuildShopLookupTest < Minitest::Test
+    def test_indexes_shops_by_shop_id
+      store_data = [{shop_id: "S100", name: "Main St", city: "New York"}]
+      lookup = SalesReport.build_shop_lookup(store_data)
+
+      assert_equal "Main St", lookup["S100"][:name]
+    end
+
+    def test_registers_online_shop
+      lookup = SalesReport.build_shop_lookup([])
+
+      refute_nil lookup["S999"]
+      assert_equal "Online", lookup["S999"][:name]
+    end
+end
+
+class GroupStoreDataTest < Minitest::Test
+    def setup
+            @shops_by_id =
+            {
+              "S100" => {shop_id: "S100", name: "Main St", city: "New York"},
+              "S999" => {shop_id: "S999", name: "Online", city: "N/A"},
+            }
+    end
+
+    def test_missing_units_sold_and_revenue_default_to_zero
+            transactions = [{shop_id:"S100", units_sold: nil, revenue: nil}]
+            row = SalesReport.group_store_data(transactions, @shops_by_id).first
+
+            assert_equal 0, row[:total_units_sold]
+            assert_equal 0.0, row[:total_revenue]
+    end
+
+    def test_unmatched_shop_id_is_skipped_not_raised
+            transactions = [{shop_id:"S404", units_sold: 9, revenue: "99.99"}]
+            result = SalesReport.group_store_data(transactions, @shops_by_id)
+
+            assert_empty result
+    end
+
+    def test_multiple_transactions_for_same_shop
+            transactions = 
+            [
+              {shop_id: "S100", units_sold:1, revenue: "1.00"},
+              {shop_id: "S100", units_sold:2, revenue: "2.00"}
+            ]
+            row = SalesReport.group_store_data(transactions, @shops_by_id).first
+
+            assert_equal 3, row[:total_units_sold]
+            assert_equal 3.00, row[:total_revenue]
+            assert_equal 2, row[:total_transactions]
+    end
+
+    def test_empty_transactions_list
+            assert_empty SalesReport.group_store_data([], @shops_by_id)
+    end
+
+    
 
 end
+
+
 
