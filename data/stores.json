@@ -1,0 +1,27 @@
+[
+    {
+        "shop_id": "S100",
+        "name": "Downtown Flagship",
+        "city": "San Francisco"
+    },
+    {
+        "shop_id": "S200",
+        "name": "City Centre",
+        "city": "London"
+    },
+    {
+        "shop_id": "S300",
+        "name": "Harbour Mall",
+        "city": "Stockholm"
+    },
+    {
+        "shop_id": "S400",
+        "name": "Riverside Outlet",
+        "city": "Paris"
+    },
+    {
+        "shop_id": "S500",
+        "name": "Airport Kiosk",
+        "city": "Berlin"
+    }
+]

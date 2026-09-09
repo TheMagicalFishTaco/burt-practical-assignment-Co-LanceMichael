@@ -1,0 +1,141 @@
+[
+    {
+        "date": "2024-03-01",
+        "country": "US",
+        "channel": "online",
+        "category": "electronics",
+        "shop_id": "S100",
+        "units_sold": 150,
+        "revenue": "123.45",
+        "transactions": 80
+    },
+    {
+        "date": "2024-03-01",
+        "country": "US",
+        "channel": "in_store",
+        "category": "electronics",
+        "shop_id": "S100",
+        "units_sold": 300,
+        "revenue": "210.10",
+        "transactions": 140
+    },
+    {
+        "date": "2024-03-01",
+        "country": "GB",
+        "channel": "online",
+        "category": "apparel",
+        "shop_id": "S200",
+        "units_sold": 50,
+        "revenue": "89.00",
+        "transactions": 30
+    },
+    {
+        "date": "2024-03-01",
+        "country": "US",
+        "channel": "online",
+        "category": "electronics",
+        "shop_id": "S100",
+        "units_sold": 150,
+        "revenue": "123.45",
+        "transactions": 80
+    },
+    {
+        "date": "2024-03-01",
+        "country": "SE",
+        "channel": "online",
+        "category": "home",
+        "shop_id": "S300",
+        "units_sold": 80,
+        "revenue": "1,234.50",
+        "transactions": 60
+    },
+    {
+        "date": "2024-03-01",
+        "country": "DE",
+        "channel": "in_store",
+        "category": "electronics",
+        "shop_id": "S200",
+        "units_sold": 0,
+        "revenue": "$0.00",
+        "transactions": 5
+    },
+    {
+        "date": "2024-03-01",
+        "country": "FR",
+        "channel": "online",
+        "category": "apparel",
+        "shop_id": "S400",
+        "units_sold": 120,
+        "revenue": null,
+        "transactions": 75
+    },
+    {
+        "date": "2024-03-01",
+        "country": "US",
+        "channel": "in_store",
+        "category": "electronics",
+        "shop_id": "S100",
+        "units_sold": 20,
+        "revenue": "15.00",
+        "transactions": 12
+    },
+    {
+        "date": "2024-03-01",
+        "country": "US",
+        "channel": "online",
+        "category": "home",
+        "shop_id": "S999",
+        "units_sold": 10,
+        "revenue": "9.99",
+        "transactions": 8
+    },
+    {
+        "date": "2024-03-01",
+        "country": "NO",
+        "channel": "in_store",
+        "category": "electronics",
+        "shop_id": "S200",
+        "units_sold": 70,
+        "revenue": "45.20",
+        "transactions": 40
+    },
+    {
+        "date": "2024-03-01",
+        "country": "",
+        "channel": "online",
+        "category": "electronics",
+        "shop_id": "S300",
+        "units_sold": 30,
+        "revenue": "12.00",
+        "transactions": 20
+    },
+    {
+        "date": "2024-03-01",
+        "country": "US",
+        "channel": "online",
+        "category": "electronics",
+        "shop_id": "S100",
+        "units_sold": 25,
+        "revenue": "50.00",
+        "transactions": 25
+    },
+    {
+        "date": "2024-03-02",
+        "country": "US",
+        "channel": "online",
+        "category": "electronics",
+        "shop_id": "S100",
+        "units_sold": 160,
+        "revenue": "130.00",
+        "transactions": 90
+    },
+    {
+        "date": "2024-03-02",
+        "country": "GB",
+        "channel": "in_store",
+        "category": "apparel",
+        "shop_id": "S200",
+        "units_sold": 40,
+        "revenue": "40.00"
+    }
+]
