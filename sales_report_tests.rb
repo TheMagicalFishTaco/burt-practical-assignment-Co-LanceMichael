@@ -18,4 +18,29 @@ class LoadFileTests < Minitest::Test
               SalesReport.load_json("data/does_not_exist.json")
             end
     end
+
+    def test_parses_valid_json_into_symbol_keyed_hashes
+            Tempfile.create(['stores','.json']) do |file|
+              file.write('[{"shop_id": "S100", "name": "Main St"}]')
+              file.flush
+
+              result = SalesReport.load_json(file.path)
+
+              assert_equal 1, result.size
+              assert_equal "S100", result.first[:shop_id]
+
+            end
+    end
+
+    def test_raises_on_malformed_json
+            Tempfile.create(['bad','.json']) do |file|
+                file.write('{not valid json}')
+                file.flush
+
+                assert_raises(JSON::ParserError) {SalesReport.load_json(file.path)}
+            end
+    end
+
+
 end
+

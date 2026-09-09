@@ -14,7 +14,7 @@ module SalesReport
         shops_by_id = store_data.each_with_object({}) do |shop, lookup|
             lookup[shop[:shop_id]] = shop  
         end         
-        shops_by_id["S999"] ||= { id: "S999", name: "Online", city: "N/A"}
+        shops_by_id["S999"] ||= { shop_id: "S999", name: "Online", city: "N/A"}
         shops_by_id
     end
 
