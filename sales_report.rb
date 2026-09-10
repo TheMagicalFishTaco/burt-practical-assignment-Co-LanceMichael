@@ -21,6 +21,7 @@ module SalesReport
     #organizes data acquired from transactions.json by shop_id, for store summary
     def self.group_store_data(transaction_data, shops_by_id)
         transaction_data.group_by { |r| r[:shop_id] }.filter_map do |shop_id, records|
+            #Cover the edge case transactions with a malformed shop ID, just put its name and city to N/A
             shop = shops_by_id[shop_id] || {name: "N/A", city: "N/A"}
             {
                 shop_name: shop[:name],
