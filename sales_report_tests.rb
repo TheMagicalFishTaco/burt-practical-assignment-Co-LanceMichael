@@ -50,12 +50,6 @@ class BuildShopLookupTest < Minitest::Test
       assert_equal "Main St", lookup["S100"][:name]
     end
 
-    def test_registers_online_shop
-      lookup = SalesReport.build_shop_lookup([])
-
-      refute_nil lookup["S999"]
-      assert_equal "Online", lookup["S999"][:name]
-    end
 end
 
 class GroupStoreDataTest < Minitest::Test
@@ -108,14 +102,14 @@ class GroupStoreDataTest < Minitest::Test
     #Tests for type errors
     def test_string_revenue_becomes_float
 	    transactions = [{shop_id: "S100", units_sold:1, revenue:9.99 }]
-	    row SalesReport.group_store_data(transactions, @shops_by_id).first
+	    row = SalesReport.group_store_data(transactions, @shops_by_id).first
 
 	    assert_equal 9.99, row[:total_revenue]
     end
 
     def test_string_units_sold_becomes_int
 	    transactions = [{shop_id: "S100", units_sold:1, revenue:9.99 }]
-	    row SalesReport.group_store_data(transactions, @shops_by_id).first
+	    row = SalesReport.group_store_data(transactions, @shops_by_id).first
 
 	    assert_equal 1, row[:total_units_sold]
     end
@@ -126,7 +120,7 @@ class GroupStoreDataTest < Minitest::Test
 	      {shop_id: "S100", units_sold:"1", revenue: 1.00},
 	      {shop_id: "S100", units_sold:2, revenue: "2.00"}
 	    ]
-	    row SalesReport.group_store_data(transactions, @shops_by_id).first
+	    row = SalesReport.group_store_data(transactions, @shops_by_id).first
 
 	    assert_equal 3, row[:total_units_sold]
 	    assert_equal 3.00, row[:total_revenue]

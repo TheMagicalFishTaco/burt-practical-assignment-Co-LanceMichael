@@ -24,9 +24,9 @@ module SalesReport
             #Cover the edge case transactions with a malformed shop ID, just put its name and city to N/A
             shop = shops_by_id[shop_id] || {name: "N/A", city: "N/A"}
             {
-                shop_name: shop[:name],
-                shop_city: shop[:city],
-                total_units_sold: records.sum { |r| r[:units_sold] || 0 },
+                shop_name: sanitize_csv(shop[:name]),
+                shop_city: sanitize_csv(shop[:city]),
+                total_units_sold: records.sum { |r| (r[:units_sold] || 0).to_i },
                 total_revenue: records.sum { |r| (r[:revenue] || 0).to_f },
                 total_transactions: records.size
             }
@@ -43,10 +43,10 @@ module SalesReport
                     country: r[:country],
                     channel: r[:channel],
                     category: r[:category],
-                    shop_name: shop[:name],
-                    shop_city: shop[:city],
-                    units_sold: r[:units_sold],
-                    revenue: r[:revenue],
+                    shop_name: sanitize_csv(shop[:name]),
+                    shop_city: sanitize_csv(shop[:city]),
+                    units_sold: r[:units_sold].to_i,
+                    revenue: r[:revenue].to_f,
                     transactions: r[:transactions]
                  }
           end
@@ -58,5 +58,14 @@ module SalesReport
             csv << headers
             rows.each { |row| csv << row.values_at(*headers) }
         end  
+    end
+
+    #if the string starts with a character that can be read as a formula, then fix it by inserting a ' at the start of the string
+    def self.sanitize_csv(value)
+            if ['=', '+', '-', '@'].include?(value[0])
+                    return value.insert(0, "'")
+            else   
+                   return value         
+            end 
     end
 end
