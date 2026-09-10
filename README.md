@@ -24,13 +24,15 @@ sales_report.rb follows a basic flow of take inputs -> build lookup -> organize 
 - Bundler
 
 ### Setup
-bundle install
+- clone or download this repository
+- Open a terminal in the project directory
+- run ```bundle install```
 
 ### Run Program
-bundle exec ruby run_sales_report.rb
+```bundle exec ruby run_sales_report.rb```
 This produces "store_summary.csv" and "transaction_breakdown.csv" in the root directory
 
-bundle exec ruby sales_report_tests.rb
+```bundle exec ruby sales_report_tests.rb```
 This will run the unit tests that cover the following cases alongside testing the functionality of sales_report's methods:
 - file input, make sure that the file exists
 - file input, make sure that the file has the correct data
